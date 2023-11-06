@@ -58,31 +58,28 @@ app.post("/cadastropessoa", async(req, res)=>{
 
 const Produto = mongoose.model("produto", produtocafeteria);
 
-app.post("/cadastroproduto", async(req, res)=>{
+app.post("/cadastroproduto", async (req, res) => {
     const id_produtocafeteria = req.body.id_produtocafeteria;
     const descricao = req.body.descricao;
     const sobremesa = req.body.sobremesa;
     const DataValidade = req.body.DataValidade;
     const quantidadeEstoque = req.body.quantidadeEstoque;
 
-    const Produto = new Produto({
-        id_produtocafeteria : id_produtocafeteria,
-        descricao : descricao,
-        sobremesa : sobremesa,
-        DataValidade : DataValidade,
-        quantidadeEstoque : quantidadeEstoque
-    })
+    const novoProduto = new Produto({
+        id_produtocafeteria: id_produtocafeteria,
+        descricao: descricao,
+        sobremesa: sobremesa,
+        DataValidade: DataValidade,
+        quantidadeEstoque: quantidadeEstoque
+    });
 
-    
-    try{
-        const newProduto = await Produto.save();
-        res.json({error : null, msg : "Cadastro ok", produtoId : newProduto._id});
-    } catch(error){
-        res.status(400).json({error});
+    try {
+        const newProduto = await novoProduto.save();
+        res.json({ error: null, msg: "Cadastro ok", produtoId: newProduto._id });
+    } catch (error) {
+        res.status(400).json({ error });
     }
-
 });
-
 
 
 app.get("/cadastrousuario", async(req, res)=>{
