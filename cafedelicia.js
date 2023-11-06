@@ -20,7 +20,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/cafedelicia',
 
 //criando a model do seu projeto
 const UsuarioSchema = new mongoose.Schema({
-    usuario : {type : String},
+    usuario : {type : String}, 
     email : {type : String, required : true},
     senha : {type : Number},
 });
