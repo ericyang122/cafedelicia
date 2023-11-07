@@ -19,51 +19,80 @@ mongoose.connect('mongodb://127.0.0.1:27017/cafedelicia',
 
 
 //criando a model do seu projeto
-const UsuarioSchema = new mongoose.Schema({
-    usuario : {type : String}, 
+const usuarioSchema = new mongoose.Schema({
     email : {type : String, required : true},
     senha : {type : Number},
 });
 
 //criando a 2 model do seu projeto
 const produtocafeteria = new mongoose.Schema({
-    id_produtocafeteria : {type : String},
+    id_produtocafeteria : {type : String, required : true},
     descricao : {type : String},
     sobremesa : {type : String},
-    DataValidade : {type : Date, required : true},
+    DataValidade : {type : Date},
     quantidadeEstoque : {type : Number},
 });
 
-const Pessoa = mongoose.model("Pessoa", UsuarioSchema,);
+const usuario = mongoose.model("usuario", usuarioSchema);
 
-
-app.post("/cadastropessoa", async(req, res)=>{
-    const usuario = req.body.nome;
+app.post("/cadastrousuario", async (req, res) => {
     const email = req.body.email;
-    const senha = req.body.numero;
+    const senha = req.body.senha; // Altere para req.body.senha para corresponder ao nome do campo do formulário
 
-    const pessoa = new Pessoa({
-        usuario : usuario,
-        email : email,  
-        senha : senha
-    })
+    // Testando se todos os campos foram preenchidos
+    if (email == null || senha == null) {
+        return res.status(400).json({ error: "Preencha todos os campos" });
+    }
 
-    try{
-        const newPessoa = await pessoa.save();
-        res.json({error : null, msg : "Cadastro ok", pessoaId : newPessoa._id});
-    } catch(error){
-        res.status(400).json({error});
+    // Testando se o email já existe
+    const emailExiste = await usuario.findOne({ email: email });
+    if (emailExiste) {
+        return res.status(400).json({ error: "Este email já está em uso" });
+    }
+
+    // Criando um novo objeto de usuário com o modelo do Mongoose
+    const novoUsuario = new usuario({
+        email: email,
+        senha: senha
+    });
+
+    try {
+        // Salvando o novo usuário no banco de dados
+        const usuarioSalvo = await novoUsuario.save();
+        res.json({ error: null, msg: "Cadastro realizado com sucesso", usuarioId: usuarioSalvo._id });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
 });
 
+
 const Produto = mongoose.model("produto", produtocafeteria);
 
-app.post("/cadastroproduto", async (req, res) => {
+app.post("/cadastroprodutocafeteria", async (req, res) => {
     const id_produtocafeteria = req.body.id_produtocafeteria;
     const descricao = req.body.descricao;
     const sobremesa = req.body.sobremesa;
     const DataValidade = req.body.DataValidade;
     const quantidadeEstoque = req.body.quantidadeEstoque;
+    //testando c todos os campos foram preenchidos 
+    if(id_produtocafeteria == null || descricao == null || sobremesa == null || DataValidade == null || quantidadeEstoque == null){
+        return res.status(400).json({error : "preencha os campo"})
+    }
+
+//teste mais importante da ac 
+    const idexiste = await usuario.findOne({id_produtocafeteria: id_produtocafeteria})
+    if(idexiste){
+        return res.status(400).json({error : "e email ja existe"})
+    }
+
+    const quantidadeEstoqueLimite = quantidadeEstoque
+ 
+    if(quantidadeEstoqueLimite > 24){
+        return res.status(400).json({error : "A quantidade de estoque foi atingido (20)"})
+    }
+    else if(quantidadeEstoqueLimite <= 0 ){
+        return res.status(400).json({error : "Insira uma quantidade possível"})
+    }
 
     const novoProduto = new Produto({
         id_produtocafeteria: id_produtocafeteria,
@@ -83,10 +112,10 @@ app.post("/cadastroproduto", async (req, res) => {
 
 
 app.get("/cadastrousuario", async(req, res)=>{
-    res.sendFile(__dirname +"/cadastropessoa.html");
+    res.sendFile(__dirname +"/cadastrousuario.html");
 })
 
-app.post("/cadastroprodutocafeteria", async(req, res)=>{
+app.get("/cadastroprodutocafeteria", async(req, res)=>{
     res.sendFile(__dirname +"/cadastroprodutocafeteria.html");
 })
 

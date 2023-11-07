@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Template Bootstrap</title>
+    <!-- Inclua a biblioteca Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-custom {
+            background-color: #808080; /* Cor de fundo cinza */
+        }
+        .navbar-custom .navbar-brand {
+            color: #ffffff; /* Cor do texto da marca */
+        }
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff; /* Cor do texto dos links */
+        }
+        .navbar-custom .logo {
+            max-width: 150px; /* Define a largura máxima da imagem */
+            width: 100%;
+            height: auto;
+            display: block; /* Para centralizar a imagem */
+        }
+    </style>
+</head>
+
+<body>
+
+ 
+
+     <!-- Barra de Navegação -->
+     <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <!-- Nome da empresa à esquerda -->
+            <a class="navbar-brand" href="#">Minha Empresa</a>
+
+            <!-- Logo no centro -->
+            <a class="navbar-brand mx-auto" href="#">
+                <img src="img/cup-hot.svg" alt="Logo Minha Empresa" class="logo">
+            </a>
+
+            <!-- Links à direita -->
+            
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastrousuario.html">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastroprodutocafeteria.html">Cadastro de Produto</a>
+                    </li>
+                </ul>
+            
+        </div>
+    </nav>
+
+    <!-- Carrossel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/cafe1.jpg" class="d-block w-100" alt="Imagem 1">
+            </div>
+            <div class="carousel-item">
+                <img src="img/cafe2.jpg" class="d-block w-100" alt="Imagem 2">
+            </div>
+            <div class="carousel-item">
+                <img src="img/cafe3.jpg" class="d-block w-100" alt="Imagem 3">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+        </a>
+    </div>
+
+    <!-- Cabeçalho -->
+    <div class="container mt-5">
+        <h2 class="text-center">Bem-vindo ao Nosso Site!</h2>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget est eu
+            lectus placerat congue non a elit.</p>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2023 Meu Site. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Inclua a biblioteca Bootstrap JS e o jQuery para funcionalidades adicionais -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

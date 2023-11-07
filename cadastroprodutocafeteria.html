@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Template Bootstrap</title>
+    <!-- Inclua a biblioteca Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-custom {
+            background-color: #808080; /* Cor de fundo cinza */
+        }
+        .navbar-custom .navbar-brand {
+            color: #ffffff; /* Cor do texto da marca */
+        }
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff; /* Cor do texto dos links */
+        }
+        .navbar-custom .logo {
+            max-width: 150px; /* Define a largura máxima da imagem */
+            width: 100%;
+            height: auto;
+            display: block; /* Para centralizar a imagem */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra de Navegação Bootstrap -->
+
+<!-- Barra de Navegação -->
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <!-- Nome da empresa à esquerda -->
+        <a class="navbar-brand" href="#">Minha Empresa</a>
+
+        <!-- Logo no centro -->
+        <a class="navbar-brand mx-auto" href="#">
+            <img src="img/cup-hot.svg" alt="Logo Minha Empresa" class="logo">
+        </a>
+
+        <!-- Links à direita -->
+        
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/cadastrousuario.html">Entrar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cadastroprodutocafeteria.html">Cadastro de Produto</a>
+                </li>
+            </ul>
+        
+    </div>
+</nav>
+
+   <!-- Formulário de Cadastro de Pessoa com Bootstrap -->
+<div class="container mt-5">
+    <h1>Cadastro de Pessoa</h1>
+    <form action="/cadastroprodutocafeteria" method="post">
+        <div class="form-group">
+            <label for="id">id produto:</label>
+            <input type="text" class="form-control" id="id_produtocafeteria" name="id_produtocafeteria" placeholder="id do produto">
+        </div>
+        <div class="form-group">
+            <label for="descricao">descricao</label>
+            <input type="text" class="form-control" id="descricao" name="descricao" placeholder="descrição">
+        </div>
+        <div class="form-group">
+            <label for="Sobremesa">Sobremesa</label>
+            <input type="text" class="form-control" id="sobremesa" name="sobremesa" placeholder="sobremesa">
+        </div>
+        <div class="form-group">
+            <label for="numero">Data Validade:</label>
+            <input type="date" class="form-control" id="DataValidade" name="DataValidade" placeholder="Número">
+        </div>
+        <div class="form-group">
+            <label for="quantidadeEstoque">Quantidade no Estoque:</label>
+            <input type="number" class="form-control" id="quantidadeEstoque" name="quantidadeEstoque" placeholder="Quantidade No Estoque">
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>
+
+<!-- Inclua o JavaScript do Bootstrap e jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+</body>
+</html>
