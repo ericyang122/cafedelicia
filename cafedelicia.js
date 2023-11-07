@@ -40,7 +40,7 @@ app.post("/cadastrousuario", async (req, res) => {
     const senha = req.body.senha; // Altere para req.body.senha para corresponder ao nome do campo do formulário
 
     // Testando se todos os campos foram preenchidos
-    if (email == null || senha == null) {
+    if ( !email || !senha) {
         return res.status(400).json({ error: "Preencha todos os campos" });
     }
 
@@ -74,9 +74,10 @@ app.post("/cadastroprodutocafeteria", async (req, res) => {
     const sobremesa = req.body.sobremesa;
     const DataValidade = req.body.DataValidade;
     const quantidadeEstoque = req.body.quantidadeEstoque;
-//testando c todos os campos foram preenchidos 
-    if(id_produtocafeteria == null || descricao == null || sobremesa == null || DataValidade == null || quantidadeEstoque == null){
-        return res.status(400).json({error : "preencha os campo"})
+
+    //testando c todos os campos foram preenchidos 
+    if (!id_produtocafeteria || !descricao || !sobremesa || !DataValidade || !quantidadeEstoque) {
+        return res.status(400).json({ error: "Preencha todos os campos corretamente" });
     }
 
 //teste mais importante da ac 
@@ -91,7 +92,7 @@ app.post("/cadastroprodutocafeteria", async (req, res) => {
         return res.status(400).json({error : "A quantidade de estoque foi atingido (20)"})
     }
     else if(quantidadeEstoqueLimite <= 0 ){
-        return res.status(400).json({error : "Insira uma quantidade possível"})
+        return res.status(400).json({error : "Insira uma quantidade maio que 0"})
     }
 
     const novoProduto = new Produto({
