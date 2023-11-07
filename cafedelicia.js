@@ -74,15 +74,15 @@ app.post("/cadastroprodutocafeteria", async (req, res) => {
     const sobremesa = req.body.sobremesa;
     const DataValidade = req.body.DataValidade;
     const quantidadeEstoque = req.body.quantidadeEstoque;
-    //testando c todos os campos foram preenchidos 
+//testando c todos os campos foram preenchidos 
     if(id_produtocafeteria == null || descricao == null || sobremesa == null || DataValidade == null || quantidadeEstoque == null){
         return res.status(400).json({error : "preencha os campo"})
     }
 
 //teste mais importante da ac 
-    const idexiste = await usuario.findOne({id_produtocafeteria: id_produtocafeteria})
+    const idexiste = await Produto.findOne({id_produtocafeteria: id_produtocafeteria})
     if(idexiste){
-        return res.status(400).json({error : "e email ja existe"})
+        return res.status(400).json({error : "esse id ja existe"})
     }
 
     const quantidadeEstoqueLimite = quantidadeEstoque
